@@ -7,3 +7,11 @@
             (freq-rec (+ count 1) (cdr ls))
             (freq-rec count (cdr ls)))))
   (freq-rec 0 L))
+
+;; same function using just 1 function
+(define (frequency1 n L)
+  (cond
+    ((null? L) 0)
+    ((= n (car L))
+     (+ 1 (frequency n (cdr L))))
+    (else (frequency n (cdr L)))))
