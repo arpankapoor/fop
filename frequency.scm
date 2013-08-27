@@ -8,7 +8,7 @@
             (freq-rec count (cdr ls)))))
   (freq-rec 0 L))
 
-;; same function using just 1 function
+;; same function using deep recursion.
 (define (frequency1 n L)
   (cond
     ((null? L) 0)

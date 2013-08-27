@@ -46,5 +46,34 @@
       (cons (cons (car l)
                   '())
             '())
-      (perm-many-lists (car l)
-                       (permutation (cdr l)))))
+      (remove-dups (perm-many-lists (car l)
+                       (permutation (cdr l))))))
+
+;; PART II
+
+;; remove any duplicates present in the list
+(define (remove-dups l)
+  (cond
+    ((null? l) '())
+    (else (cons (car l)
+                (remove-dups (remove (car l)
+                                     l))))))
+
+;; remove the list s from the list-of-lists l
+(define (remove s l)
+  (cond
+    ((null? l) '())
+    ((eqlist? s (car l))
+     (remove s (cdr l)))
+    (else (cons (car l)
+                (remove s (cdr l))))))
+
+;; check if two lists (containing only numbers)
+;; are equal or not
+(define (eqlist? l1 l2)
+  (cond
+    ((and (null? l1) (null? l2))
+     #t)
+    ((= (car l1) (car l2))
+     (eqlist? (cdr l1) (cdr l2)))
+    (else #f)))
